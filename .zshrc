@@ -3,17 +3,23 @@ export DIRENV_LOG_FORMAT=""
 # Editor
 EDITOR='nvim'
 
-# Add ~/.local/bin to PATH
+# Add ~/.local/bin to PATH.
 export PATH="$HOME/.local/bin:$PATH"
 
-# Add ~/.cargo/bin to PATH added that due to eza's cargo build installation.
+# Add ~/.cargo/bin to PATH added that due to eza's cargo build installation. (prepending)
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Add ~/go/bin/ to PATH added that due to lazydocker's go build installation. (prepending)
+export PATH="$(go env GOPATH)/bin:$PATH"
+# Disable go telemetry.
+export GOTELEMETRY=off
+
 # fzf defaut configs
-# export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --style full"
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --style full"
 # export FZF_DEFAULT_OPTS="--layout reverse --height 60% --border kfull"
 export FZF_CTRL_T_OPTS="--style full --walker-skip .git,node_modules,target --preview 'bat --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-export FZF_CTRL_C_OPTS="--style full --preview 'eza -1 --color=always' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_ALT_C_OPTS="--style full --preview 'eza --tree --level=2 --color=always --all --icons {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_CTRL_R_OPTS="--style full --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
@@ -40,7 +46,8 @@ autoload -U compinit && compinit
 # Completion Styling
 zstyle ':completion:*' menu no
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':fzf-tab:*' fzf-flags --style full --height 40% --border
+# zstyle ':fzf-tab:*' fzf-flags --style full --height 40% --border
+zstyle ':fzf-tab:*' fzf-flags --style full --height 40%
 # zstyle ':fzf-tab:complete:(cd|__zoxide_z):*' fzf-preview "eza --tree --level=2 --icons ${}"
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -2 --color=always $realpath'
@@ -109,3 +116,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
+alias lzd='lazydocker'
