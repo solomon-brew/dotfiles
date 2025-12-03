@@ -14,6 +14,10 @@ export PATH="$(go env GOPATH)/bin:$PATH"
 # Disable go telemetry.
 export GOTELEMETRY=off
 
+if command -v keychain >/dev/null 2>&1; then
+    eval $(keychain --quiet --eval github)
+fi
+
 # fzf defaut configs
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --style full"
 # export FZF_DEFAULT_OPTS="--layout reverse --height 60% --border kfull"
