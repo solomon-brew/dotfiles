@@ -1,4 +1,4 @@
-export DIRENV_LOG_FORMAT=""
+# export DIRENV_LOG_FORMAT=""
 
 # Editor
 EDITOR='nvim'
@@ -10,9 +10,9 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Add ~/go/bin/ to PATH added that due to lazydocker's go build installation. (prepending)
-export PATH="$(go env GOPATH)/bin:$PATH"
+# export PATH="$(go env GOPATH)/bin:$PATH"
 # Disable go telemetry.
-export GOTELEMETRY=off
+# export GOTELEMETRY=off
 
 if command -v keychain >/dev/null 2>&1; then
     eval $(keychain --quiet --eval github)
@@ -92,9 +92,11 @@ setopt hist_find_no_dups
 
 # Shell integrations
 eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(direnv hook zsh)"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+source "$HOME/.local/share/swiftly/env.sh"
 
 # Keybindigns
 bindkey '^p' history-search-backward
@@ -114,7 +116,7 @@ alias q='exit'
 alias minikctl="minikube kubectl"
 
 # nvm requires
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
