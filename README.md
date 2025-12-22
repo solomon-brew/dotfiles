@@ -27,6 +27,6 @@ git config --global user.email "ravic@ciandt.com"
 git config --global user.name "Ravi Correia"
 git config --global core.sshCommand "/mnt/c/Windows/System32/OpenSSH/ssh.exe"
 git clone git@github.com:ravicorreia/dotfiles
-cd dotfiles-clean
+cd dotfiles
 stow .
 cd ~
