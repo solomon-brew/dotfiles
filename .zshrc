@@ -14,9 +14,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Disable go telemetry.
 # export GOTELEMETRY=off
 
-if command -v keychain >/dev/null 2>&1; then
-    eval $(keychain --quiet --eval github)
-fi
 
 # fzf defaut configs
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --style full"
@@ -31,6 +28,7 @@ if [ ! -d ~/.tmux/plugins/tpm ]; then
 fi
 
 # TODO need to find out what are those to lines for..
+# I believe it's for transient prompting
 setopt PROMPT_SUBST
 precmd() { print -n "\033]0;${PWD}\007" }
 
@@ -92,18 +90,20 @@ setopt hist_find_no_dups
 
 # Shell integrations
 eval "$(zoxide init zsh)"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # eval "$(direnv hook zsh)"
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-source "$HOME/.local/share/swiftly/env.sh"
+
+# source "$HOME/.local/share/swiftly/env.sh"
 
 # Keybindigns
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 # Enable vi mode
 bindkey -v
-# Set jk as escape
+# Set kj as escape
 bindkey -M viins 'kj' vi-cmd-mode
 
 alias l='eza --long --tree --level=1 --all --icons --group-directories-last --git-repos --git --no-permissions --no-filesize --no-user --no-time'
@@ -125,5 +125,5 @@ export NVM_DIR="$HOME/.config/nvm"
 alias lzd='lazydocker'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.config/sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
