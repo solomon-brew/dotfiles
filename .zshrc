@@ -14,6 +14,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Disable go telemetry.
 # export GOTELEMETRY=off
 
+# if command -v keychain >/dev/null 2>&1; then
+#     eval $(keychain --quiet --eval github)
+# fi
 
 # fzf defaut configs
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --style full"
@@ -95,7 +98,6 @@ eval "$(zoxide init zsh)"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-
 # source "$HOME/.local/share/swiftly/env.sh"
 
 # Keybindigns

@@ -1,28 +1,33 @@
 #!/bin/bash
 
-# Otimizações para DNF mais rápido
-echo -e "\n# Otimizações para DNF mais rápido\nmax_parallel_downloads=10\nfastestmirror=True" | sudo tee -a /etc/dnf/dnf.conf
-
 # Atualização e instalação de pacotes necessários
-sudo dnf up -y
-sudo dnf copr enable atim/lazygit -y
-sudo dnf group install c-development -y
+sudo apt update
+sudo apt upgrade -y
 
-sudo dnf install zsh git bat xclip tmux direnv zoxide httpie lazygit neovim fastfetch gh fzf ripgrep fd tldr stow docker-cli docker-compose docker-distribution cargo python-devel pipx -y
+# Instala ferramentas de desenvolvimento
+sudo apt install build-essential -y
+
+# Instala pacotes necessários
+sudo apt install zsh git bat xclip tmux direnv zoxide httpie neovim fastfetch gh fzf ripgrep fd-find tldr stow docker.io docker-compose cargo python3-dev pipx lazygit eza -y
+
+# # Instalação do lazygit via PPA (descomente se desejar)
+# sudo add-apt-repository ppa:lazygit-team/release -y
+# sudo apt update
+# sudo apt install lazygit -y
 
 # Adiciona o usuário ao grupo docker
 sudo usermod -aG docker $USER
 
-# Clona e instala o eza
-mkdir -p ~/downloads
-cd ~/downloads
-git clone https://github.com/eza-community/eza.git
-cd eza
-cargo install --path .
-cd ~
+# # Clona e instala o eza (descomente se eza não estiver disponível via apt)
+# mkdir -p ~/downloads
+# cd ~/downloads
+# git clone https://github.com/eza-community/eza.git
+# cd eza
+# cargo install --path .
+# cd ~
 
 # Define o shell padrão como zsh
-chsh -s /usr/bin/zsh
+chsh -s /usr/bin/zsh $USER
 
 # Configurações globais do git
 git config --global init.defaultBranch main
