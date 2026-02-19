@@ -14,6 +14,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Disable go telemetry.
 # export GOTELEMETRY=off
 
+if command -v keychain >/dev/null 2>&1; then
+    eval $(keychain --quiet --eval github)
+fi
 
 # fzf defaut configs
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --style full"
@@ -48,12 +51,9 @@ autoload -U compinit && compinit
 # Completion Styling
 zstyle ':completion:*' menu no
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-# zstyle ':fzf-tab:*' fzf-flags --style full --height 40% --border
 zstyle ':fzf-tab:*' fzf-flags --style full --height 40%
-# zstyle ':fzf-tab:complete:(cd|__zoxide_z):*' fzf-preview "eza --tree --level=2 --icons ${}"
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -2 --color=always $realpath'
-# zstyle 'completion:*' fzf-preview "eza --tree --level=2 --icons"
 
 # Load starship theme
 zinit ice as"command" from"gh-r" \
