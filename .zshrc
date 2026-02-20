@@ -15,7 +15,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # export GOTELEMETRY=off
 
 if command -v keychain >/dev/null 2>&1; then
-    eval $(keychain --quiet --eval github)
+    eval $(keychain --quiet --eval id_github)
 fi
 
 # fzf defaut configs

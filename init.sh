@@ -14,7 +14,7 @@ sudo dnf install zsh git bat xclip tmux direnv zoxide httpie lazygit keychain ne
 sudo usermod -aG docker $USER
 
 # Clona e instala o eza
-mkdir -p ~/downloads
+mkdir -p ~/downloads  
 cd ~/downloads
 git clone https://github.com/eza-community/eza.git
 cd eza
@@ -25,9 +25,13 @@ cd ~
 chsh -s /usr/bin/zsh
 
 # Configurações globais do git
+mkdir -p ~/.ssh
 git config --global init.defaultBranch main
 git config --global user.email "ravicorreia@icloud.com"
 git config --global user.name "Ravi Correia"
+
+# Criação de chaves SSH para autenticação com o GitHub
+ssh-keygen -t ed25519 -f ~/.ssh/id_github -C "ravicorreia@icloud.com" -N ""
 
 # Clona o repositório de dotfiles e aplica as configurações
 git clone git@github.com:solomon-brew/dotfiles
