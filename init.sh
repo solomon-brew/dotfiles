@@ -39,7 +39,7 @@ git config --global user.name "Ravi Correia"
 # Create an SSH key pair for GitHub authentication.
 ssh-keygen -t ed25519 -f ~/.ssh/id_github -C "ravicorreia@icloud.com" -N ""
 eval $(keychain --quiet --eval id_github)
-bat --color=always ~/.ssh/id_github.pub | xclip -sel clip
+cat ~/.ssh/id_github.pub | xclip -sel clip
 
 # Wait for the user to add the SSH key to their GitHub account before proceeding. This is necessary because the next step involves cloning a private repository, which requires authentication with the SSH key.
 read -p "A chave SSH pública foi copiada para a área de transferência. Por favor, adicione-a à sua conta do GitHub e pressione Enter para continuar..."
