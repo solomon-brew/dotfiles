@@ -2,4 +2,4 @@
 
 My dotfiles and environment configurations.
 
-A clean and simple dotfiles, optimized to omarchy.
+A clean and simple dotfiles, optimized to Fedora.

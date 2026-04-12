@@ -1,1 +1,0 @@
-/home/ravxavr/.config/omarchy/current/theme/neovim.lua
