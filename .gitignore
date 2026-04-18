@@ -1,4 +1,5 @@
 history.txt
+
 .config/tmux/plugins
 .config/warp-terminal/user_preferences.json
 .config/gh
@@ -6,3 +7,4 @@ history.txt
 .config/github-copilot
 .config/nvim/spell
 .config/configstore/update-notifier-@google
+.DS_Store
